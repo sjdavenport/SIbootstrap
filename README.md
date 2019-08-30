@@ -3,9 +3,6 @@ A collection of code to calculate the bias at the location of peaks and
 reproduce figures. See https://www.biorxiv.org/content/10.1101/500512v2
 for the current version of the paper.
 
-In order to clone this repo run:
-git clone --depth=1 https://github.com/BrainStatsSam/SIbootstrap
-
 ## Table of contents
 * [Introduction](#introduction)
 * [Folder Structure](#folderstruct)
