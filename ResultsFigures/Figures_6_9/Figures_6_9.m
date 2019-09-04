@@ -28,7 +28,7 @@ xlabel('Sample Size')
 ylabel('Average number of voxels above the threshold')
 legend('Bootstrap/Circular', 'Data-Splitting', 'Location', 'NorthWest')
 
-set(gca,'fontsize', 20)
+set(gca,'fontsize', 30)
 
 %% Plot saving:
 export_fig([SIbootstrap_loc, 'ResultsFigures/Figures_6_9/Figure_6.pdf'], '-transparent')
@@ -50,8 +50,8 @@ for I = 1:length(nsubj_vec_boot)
 end
 
 %%
-axis_font_size = 40;
-set(0,'defaultAxesFontSize', axis_font_size);
+% axis_font_size = 40;
+% set(0,'defaultAxesFontSize', axis_font_size);
 plot(nsubj_vec_boot, vec_of_avgs_boot, 'LineWidth', 4, 'color', def_col('yellow'))
 hold on
 plot(nsubj_vec_boot, vec_of_avgs_ds, 'LineWidth', 4, 'color', def_col('blue'))
@@ -63,7 +63,7 @@ xlabel('Sample Size')
 ylabel('Average number of voxels above the threshold')
 legend('Bootstrap/Circular', 'Data-Splitting', 'Location', 'NorthWest')
 
-set(gca,'fontsize', 20)
+set(gca,'fontsize', 30)
 
 %% Plot saving:
 export_fig([SIbootstrap_loc, 'ResultsFigures/Figures_6_9/Figure_9.pdf'], '-transparent')
