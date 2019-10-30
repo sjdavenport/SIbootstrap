@@ -57,6 +57,10 @@ set(gca, 'XTickLabel', {'N = 20', 'N = 50', 'N = 100'})
 set(gcf, 'position', pos_vector)
 % abline('v',1.5, 'LineStyle', '-', 'color', 'black') 
 % abline('v',2.5, 'LineStyle', '-', 'color', 'black') 
+h = gca;
+% 2015 h.XRuler.TickLength = 0;
+h.YAxis.TickLength = [0,0];
+h.XAxis.TickLength = [0,0];
 export_fig([save_loc, 'Figure_', corresponding_figure, '_rmse.pdf'], '-transparent')
 
 %%
@@ -70,6 +74,10 @@ ylabel('Standard Deviation in %BOLD', 'FontSize', 20)
 title('Comparing the standard deviation across significant peaks','FontSize', 25, 'FontWeight', 'normal')
 set(gca, 'XTickLabel', {'N = 20', 'N = 50', 'N = 100'})
 set(gcf, 'position', pos_vector)
+h = gca;
+% 2015 h.XRuler.TickLength = 0;
+h.YAxis.TickLength = [0,0];
+h.XAxis.TickLength = [0,0];
 export_fig([save_loc, 'Figure_', corresponding_figure, '_std.pdf'], '-transparent')
 
 %%
@@ -130,6 +138,10 @@ set(gca, 'XTickLabel', {'N = 20', 'N = 50', 'N = 100'})
 set(gcf, 'position', pos_vector)
 % abline('v',1.5, 'LineStyle', '-', 'color', 'black') 
 % abline('v',2.5, 'LineStyle', '-', 'color', 'black') 
+h = gca;
+% 2015 h.XRuler.TickLength = 0;
+h.YAxis.TickLength = [0,0];
+h.XAxis.TickLength = [0,0];
 export_fig([save_loc, 'Figure_', corresponding_figure, '_rmse.pdf'], '-transparent')
 %%
 set(0,'defaultAxesFontSize', 20);
@@ -137,12 +149,17 @@ bar_var_plot = bar(var_plots, 'FaceColor', def_col('blue'));
 bar_var_plot(1).FaceColor = def_col('red');
 bar_var_plot(3).FaceColor = def_col('yellow');
 
+ylim([0,0.36])
 legend('Circular', 'Data-Splitting', 'Bootstrap')
 % xlim([0.35,3.65])
 ylabel('Standard Deviation of Cohen''s d', 'FontSize', 20)
 title('Comparing the standard deviation across significant peaks','FontSize', 25, 'FontWeight', 'normal')
 set(gca, 'XTickLabel', {'N = 20', 'N = 50', 'N = 100'})
 set(gcf, 'position', pos_vector)
+h = gca;
+% 2015 h.XRuler.TickLength = 0;
+h.YAxis.TickLength = [0,0];
+h.XAxis.TickLength = [0,0];
 export_fig([save_loc, 'Figure_', corresponding_figure, '_std.pdf'], '-transparent')
 
 
@@ -191,6 +208,10 @@ ylabel('RMSE in %BOLD', 'FontSize', 20)
 title('Comparing the RMSE across significant peaks', 'FontSize', 25, 'FontWeight', 'normal')
 set(gca, 'XTickLabel', {'N = 20', 'N = 50', 'N = 100'})
 set(gcf, 'position', pos_vector)
+h = gca;
+% 2015 h.XRuler.TickLength = 0;
+h.YAxis.TickLength = [0,0];
+h.XAxis.TickLength = [0,0];
 export_fig([save_loc, 'Figure_', corresponding_figure, '_rmse.pdf'], '-transparent')
 %%
 set(0,'defaultAxesFontSize', 20);
@@ -204,6 +225,10 @@ ylabel('Standard Deviation in %BOLD', 'FontSize', 20)
 title('Comparing the standard deviation across significant peaks','FontSize', 25, 'FontWeight', 'normal')
 set(gca, 'XTickLabel', {'N = 20', 'N = 50', 'N = 100'})
 set(gcf, 'position', pos_vector)
+h = gca;
+% 2015 h.XRuler.TickLength = 0;
+h.YAxis.TickLength = [0,0];
+h.XAxis.TickLength = [0,0];
 export_fig([save_loc, 'Figure_', corresponding_figure, '_std.pdf'], '-transparent')
 
 
@@ -245,6 +270,8 @@ bar_mse_plot = bar(mse_plots, 'FaceColor', def_col('blue'));
 bar_mse_plot(1).FaceColor = def_col('red');
 bar_mse_plot(3).FaceColor = def_col('yellow');
 ylim(sqrt([0,0.04]))
+% ylim([0,0.36])
+
 
 legend('Circular', 'Data-Splitting', 'Bootstrap')
 % set(gca, 'XTicks',[1, 2, 3])
@@ -252,6 +279,10 @@ ylabel('RMSE of R^2', 'FontSize', 20)
 title('Comparing the RMSE across significant peaks', 'FontSize', 25, 'FontWeight', 'normal')
 set(gca, 'XTickLabel', {'N = 50', 'N = 100', 'N = 150'})
 set(gcf, 'position', pos_vector)
+h = gca;
+% 2015 h.XRuler.TickLength = 0;
+h.YAxis.TickLength = [0,0];
+h.XAxis.TickLength = [0,0];
 export_fig([save_loc, 'Figure_', corresponding_figure, '_rmse.pdf'], '-transparent')
 
 %%
@@ -267,4 +298,8 @@ ylabel('Standard Deviation of R^2', 'FontSize', 20)
 title('Comparing the standard deviation across significant peaks','FontSize', 25, 'FontWeight', 'normal')
 set(gca, 'XTickLabel', {'N = 50', 'N = 100', 'N = 150'})
 set(gcf, 'position', pos_vector)
+h = gca;
+% 2015 h.XRuler.TickLength = 0;
+h.YAxis.TickLength = [0,0];
+h.XAxis.TickLength = [0,0];
 export_fig([save_loc, 'Figure_', corresponding_figure, '_std.pdf'], '-transparent')
