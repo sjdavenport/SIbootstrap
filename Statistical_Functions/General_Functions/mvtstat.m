@@ -6,7 +6,8 @@ function [tstat, xbar, std_dev, cohensd] = mvtstat( data, Dim, nansaszeros )
 %               nsubj by Dim matrix with the data but not fixed the output
 %               for this yet, the output is then [1, 91, 109, 91] not
 %               [91,109,91].
-% threeD        0/1, whether to return a 3D image or not. Default = 0.
+% Dim           the dimension to return.
+% nansaszeros   0/1 whether to return NaN entries as zeros. Default is 0.
 %--------------------------------------------------------------------------
 % OUTPUT
 % tstat         the one sample t-statistic at each voxel.
@@ -18,6 +19,10 @@ function [tstat, xbar, std_dev, cohensd] = mvtstat( data, Dim, nansaszeros )
 % Dim = [100,100];
 % noise = noisegen(Dim, 20, 2, 1);
 % tstat = mvtstat(noise, Dim);
+%
+% Dim = 100;
+% noise = noisegen(Dim, 20, 2, 1);
+% tstat = mvtstat(noise);
 % 
 % nsubj = 20;
 % noise = noisegen([91,109,91], nsubj, 6, 3);
