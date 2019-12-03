@@ -55,7 +55,7 @@ nsubj = sD(1);
 xbar = mean(data);
 sq_xbar = mean(data.^2);
     
-est_var = (nsubj/(nsubj-1))*(sq_xbar - (xbar.^2));
+est_var = (nsubj/(nsubj-1))*(sq_xbar - (xbar.^2)); %This is the population estimate!
 std_dev = sqrt(est_var);
 
 if Dim == 1
