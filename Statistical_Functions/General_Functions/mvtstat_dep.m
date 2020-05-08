@@ -1,4 +1,4 @@
-function [tstat, xbar, std_dev, cohensd] = mvtstat( data, Dim, nansaszeros )
+function [tstat, xbar, std_dev, cohensd] = mvtstat_dep( data, Dim, nansaszeros )
 % MVTSTAT( data, threeD, nansaszeros ) computes the multivariate t-statistic.
 %--------------------------------------------------------------------------
 % ARGUMENTS
@@ -34,7 +34,7 @@ function [tstat, xbar, std_dev, cohensd] = mvtstat( data, Dim, nansaszeros )
 % sqrt(nsubj)*mu/sigmatilde
 % tstat(vox)
 %--------------------------------------------------------------------------
-% AUTHOR: Sam Davenport.
+% AUTHOR: Sam Davenport
 % NEEDS TO MOVE TO THE RFTtoolbox!
 if nargin < 2
     Dim = NaN;
