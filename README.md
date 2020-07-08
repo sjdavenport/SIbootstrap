@@ -1,7 +1,6 @@
 # Selective peak inference: Unbiased estimation of raw and standardized effect size at local maxima
-A collection of code to calculate the bias at the location of peaks and
-reproduce figures. See https://www.biorxiv.org/content/10.1101/500512v2
-for the current version of the paper.
+The code here can be used to calculate the bias at peak locations, fit big data analyses and simulations as well as to 
+reproduce all figures from the paper available at: https://www.sciencedirect.com/science/article/pii/S1053811919309668.
 
 ## Table of contents
 * [Introduction](#introduction)
