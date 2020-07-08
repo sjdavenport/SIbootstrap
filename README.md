@@ -108,10 +108,9 @@ downloaded at https://uk.mathworks.com/matlabcentral/fileexchange/23629-export_f
 
 ## Citation <a name="dependencies"></a>
 Please feel free to use any and all code from this repository in your own work
-however if you do please cite our pre-print found at:
-https://www.biorxiv.org/content/10.1101/500512v2n
-and if you share code online that uses this code please include a link 
-to this repository.
+however if you do please cite our paper:
+Davenport, Samuel, and Nichols, Thomas E. "Selective peak inference: Unbiased estimation of raw and standardized effect size at local maxima." NeuroImage 209 (2020): 116375.
+and please include a link to this repository.
 
 
 ```
