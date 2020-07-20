@@ -1,6 +1,9 @@
 # Selective peak inference: Unbiased estimation of raw and standardized effect size at local maxima
 The code here can be used to calculate the bias at peak locations, fit big data analyses and simulations as well as to 
 reproduce all figures from the paper available at: https://www.sciencedirect.com/science/article/pii/S1053811919309668.
+Please feel free to use any and all of the code from this repository in your own work
+however if you do please cite our paper and please include a link to this repository.
+
 
 ## Table of contents
 * [Introduction](#introduction)
@@ -107,9 +110,9 @@ Figures were printed to pdfs using the export_fig matlab package. This can be
 downloaded at https://uk.mathworks.com/matlabcentral/fileexchange/23629-export_fig
 
 ## Citation <a name="dependencies"></a>
-Please feel free to use any and all code from this repository in your own work
+Please feel free to use any and all of the code from this repository in your own work
 however if you do please cite our paper:
-Davenport, Samuel, and Nichols, Thomas E. "Selective peak inference: Unbiased estimation of raw and standardized effect size at local maxima." NeuroImage 209 (2020): 116375.
+Davenport, Samuel, and Nichols, Thomas E. "Selective peak inference: Unbiased estimation of raw and standardized effect size at local maxima." NeuroImage 209 (2020): 116375
 and please include a link to this repository.
 
 
