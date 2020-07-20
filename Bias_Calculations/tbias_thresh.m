@@ -122,7 +122,7 @@ CD_est = CD_est/nctcorrection(nSubj);
 
 naiveest = est_CD_vec(top_lm_indices)/nctcorrection(nSubj);
 
-if isnan(true_CD);
+if isnan(true_CD)
     trueval = NaN;
 else
     trueval = true_CD(top_lm_indices);
