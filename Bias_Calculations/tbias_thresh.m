@@ -27,13 +27,13 @@ function [ CD_est, naiveest, trueval, top_lm_indices ] = tbias_thresh( local, B,
 %               t-statistic.
 %--------------------------------------------------------------------------
 % EXAMPLE 
-% Mag = [1, repmat(0.5, 1, 8)];
+% Mag = [1, repmat(1, 1, 8)];
 % Rad = 10;
 % stdsize = [91,109,91];
 % Sig = gensig( Mag, Rad, 6, stdsize, {[45.5, 54.5, 45.5], [20,20,20], [71,20,20], [20,20,71], [20,89,20], [71,89,20], [71,20, 71], [20, 89, 71], [71, 89, 71]} );
 % Sig = Sig(:)';
 % B = 100;
-% nsubj = 20;
+% nsubj = 100;
 % data = zeros(nsubj, prod(stdsize));
 % subject_mask = ones(stdsize);
 % 
@@ -43,8 +43,22 @@ function [ CD_est, naiveest, trueval, top_lm_indices ] = tbias_thresh( local, B,
 %     data(I, :) = Sig + noise(I,:);
 % end
 % 
-% [ est, estwas, trueval, top_lm_indices ] = ...
-%     tbias_thresh(1, B, data, subject_mask, Sig );
+% [ est, circular_est, trueval, top_lm_indices ] =  tbias_thresh(1, B, data, subject_mask, Sig);
+% 
+% subplot(1,2,1)
+% plot(trueval, est, '*')
+% hold on
+% minax = min([trueval, est]); maxax = max([trueval, est]);
+% plot([minax,maxax], [minax,maxax], '--')
+% xlabel('True CD value'); ylabel('Estimated CD value')
+% title('True vs Bootstrap corrected estimate')
+% subplot(1,2,2)
+% plot(trueval, circular_est, '*')
+% hold on
+% minax = min([trueval, circular_est]); maxax = max([trueval, circular_est]);
+% plot([minax,maxax], [minax,maxax], '--')
+% xlabel('True CD value'); ylabel('Estimated CD value')
+% title('True vs Circular corrected estimate')
 %--------------------------------------------------------------------------
 % PACKAGES REQUIRED
 % RFTtoolbox
@@ -65,7 +79,6 @@ end
 if nargin < 7
     threshold = NaN;
 end
-
 
 s = size(true_CD);
 if s(1) ~= 1
@@ -91,7 +104,8 @@ end
 mask_of_greater_than_threshold = (sqrt(nSubj)*est_CD_vec > threshold);
 mask_of_greater_than_threshold = reshape(mask_of_greater_than_threshold, image_dimensions).*mask;
 
-[top_lm_indices, top] = lmindices(est_CD_vec, Inf, mask_of_greater_than_threshold);
+[~, top_lm_indices] = lmindices(est_CD_vec, 'all', mask_of_greater_than_threshold);
+top = length(top_lm_indices);
 
 if top == 0
     CD_est = NaN;
@@ -108,7 +122,7 @@ for b = 1:B
 
     [~, ~, CD_map] = meanmos(temp_data);
     
-    lm_indices = lmindices(CD_map, top, mask);
+    [~, lm_indices] = lmindices(CD_map, top, mask);
     if local == 1
         bias = bias + CD_map(lm_indices) - est_CD_vec(lm_indices);
     else

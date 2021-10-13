@@ -28,13 +28,13 @@ function [ meanest, naiveest, trueval, top_lm_indices ] = t4lmbias( local, B, da
 %               t-statistic.
 %--------------------------------------------------------------------------
 % EXAMPLES - Note this requires the RFTtoolbox package.
-% Mag = [1, repmat(0.5, 1, 8)];
+% Mag = ones(1,9);
 % Rad = 10;
 % stdsize = [91,109,91];
 % Sig = gensig( Mag, Rad, 6, stdsize, {[45.5, 54.5, 45.5], [20,20,20], [71,20,20], [20,20,71], [20,89,20], [71,89,20], [71,20, 71], [20, 89, 71], [71, 89, 71]} );
 % Sig = Sig(:)';
 % B = 100;
-% nsubj = 20;
+% nsubj = 100;
 % data = zeros(nsubj, prod(stdsize));
 % subject_mask = ones(stdsize);
 % 
@@ -44,8 +44,23 @@ function [ meanest, naiveest, trueval, top_lm_indices ] = t4lmbias( local, B, da
 %     data(I, :) = Sig + noise(I,:);
 % end
 % 
-% [ est, estwas, trueval, top_lm_indices ] = ...
+% [ est, circular_est, trueval, top_lm_indices ] = ...
 %     t4lmbias(1, B, data, Sig, subject_mask);
+% 
+% subplot(1,2,1)
+% plot(trueval, est, '*')
+% hold on
+% minax = min([trueval, est]); maxax = max([trueval, est]);
+% plot([minax,maxax], [minax,maxax], '--')
+% xlabel('True mean value'); ylabel('Estimated mean value')
+% title('True vs Bootstrap corrected estimate')
+% subplot(1,2,2)
+% plot(trueval, circular_est, '*')
+% hold on
+% minax = min([trueval, circular_est]); maxax = max([trueval, circular_est]);
+% plot([minax,maxax], [minax,maxax], '--')
+% xlabel('True mean value'); ylabel('Estimated mean value')
+% title('True vs Circular corrected estimate')
 %--------------------------------------------------------------------------
 % PACKAGES REQUIRED
 % RFTtoolbox
@@ -88,7 +103,8 @@ end
 mask_of_greater_than_threshold = (sqrt(nSubj)*est_CD_vec > threshold);
 mask_of_greater_than_threshold = reshape(mask_of_greater_than_threshold, [91,109,91]).*mask;
 
-[top_lm_indices, top] = lmindices(est_CD_vec, Inf, mask_of_greater_than_threshold);
+[~,top_lm_indices] = lmindices(est_CD_vec, 'all', mask_of_greater_than_threshold);
+top = length(top_lm_indices);
 
 if top == 0
     meanest = NaN;
@@ -107,7 +123,7 @@ if use_para
         
         [mean_map, ~, CD_map] = calcCD(temp_data, 0);
         
-        lm_indices = lmindices(CD_map, top, mask);
+        [~,lm_indices] = lmindices(CD_map, top, mask);
         if local == 1
             lm_bias_vec(b) = mean_map(lm_indices) - est_mean_vec(lm_indices);
         else
@@ -136,7 +152,7 @@ bias = bias/B;
 meanest = est_mean_vec(top_lm_indices) - bias;
 
 naiveest = est_mean_vec(top_lm_indices);
-if isnan(true_mean);
+if isnan(true_mean)
     trueval = NaN;
 else
     trueval = true_mean(top_lm_indices);

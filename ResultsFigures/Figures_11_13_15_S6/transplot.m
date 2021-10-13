@@ -16,11 +16,12 @@ function scatterPoints = transplot(x,y,sizeOfCircle,opacity, color)
 % A plot of x against y.
 %--------------------------------------------------------------------------
 % EXAMPLES
-% transplot(randn(5000,1),randn(5000,1),0.1,0.05)
-% set(scatterPoints,'FaceColor',[1,0,0]);
+% transplot(randn(5000,1),randn(5000,1),0.1,0.05); xlim([-4,4]); ylim([-4,4])
+% %set(scatterPoints,'FaceColor',[1,0,0]);
 %--------------------------------------------------------------------------
-% AUTHOR: Thomas Nichols and Sam Davenport
-if nargin < 4
+% AUTHORS: Thomas E. Nichols and Samuel Davenport
+%--------------------------------------------------------------------------
+if nargin < 5
     defaultColors = get(0,'DefaultAxesColorOrder');
     color = defaultColors(1,:);
 end

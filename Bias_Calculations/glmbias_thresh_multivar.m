@@ -106,7 +106,8 @@ end
 mask_of_greater_than_threshold = Fstat > threshold;
 mask_of_greater_than_threshold = reshape(mask_of_greater_than_threshold, [91,109,91]).*mask;
 
-[top_lm_indices, top] = lmindices(Fstat, Inf, mask_of_greater_than_threshold);
+[~,top_lm_indices] = lmindices(Fstat, 'all', mask_of_greater_than_threshold);
+top = length(top_lm_indices);
 
 if top == 0
     R2est = NaN;
@@ -125,7 +126,7 @@ if use_para
         boot_data = est_fitted + boot_residuals;
         out = MVlm_multivar( X, boot_data, contrast, use_inter );
         boot_R2 = out.R2;
-        lm_indices = lmindices(boot_R2, top, mask);
+        [~,lm_indices] = lmindices(boot_R2, top, mask);
         
         if local == 1
             R2_bias_vec(b) =  boot_R2(lm_indices) - est_R2(lm_indices);
@@ -142,7 +143,7 @@ else
         boot_data = est_fitted + boot_residuals;
         out = MVlm_multivar( X, boot_data, contrast, use_inter );
         boot_R2 = out.R2;
-        lm_indices = lmindices(boot_R2, top, mask);
+        [~,lm_indices] = lmindices(boot_R2, top, mask);
         
         if local == 1
             R2_bias = R2_bias + boot_R2(lm_indices) - est_R2(lm_indices);

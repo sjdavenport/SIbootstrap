@@ -35,7 +35,7 @@ function [ meanest, naiveest, trueval, top_lm_indices ] = lmbias_thresh( local, 
 % Sig = gensig( Mag, Rad, 6, stdsize, {[20,30,20], [40,70,40], [40, 70,70]} );
 % Sig = Sig(:)';
 % B = 100;
-% nsubj = 20;
+% nsubj = 100;
 % data = zeros(nsubj, prod(stdsize));
 % subject_mask = ones(stdsize);
 % 
@@ -78,7 +78,8 @@ est_mean_vec = mean(data, 1);
 mask_of_greater_than_threshold = est_mean_vec > threshold;
 
 mask_of_greater_than_threshold = reshape(mask_of_greater_than_threshold, [91,109,91]).*mask;
-[top_lm_indices, top] = lmindices(est_mean_vec, Inf, mask_of_greater_than_threshold);
+[~,top_lm_indices] = lmindices(est_mean_vec, 'all', mask_of_greater_than_threshold);
+top = length(top_lm_indices);
 
 if top == 0
     meanest = NaN;
@@ -94,7 +95,7 @@ for b = 1:B
     temp_data = data(sample_index, :);
     mean_map = mean(temp_data,1);
     
-    lm_indices = lmindices(mean_map, top, mask);
+    [~,lm_indices] = lmindices(mean_map, top, mask);
     if local == 1
         bias = bias + mean_map(lm_indices) - est_mean_vec(lm_indices);
     else
