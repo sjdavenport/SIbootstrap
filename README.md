@@ -98,7 +98,7 @@ This folder contains general statistical functions used in modelling.
 
 ### RFTtoolbox <a name="rftbox"></a>
 In order to run most of this code you will need the RFTtoolbox package.  
-This can be downloaded at: https://github.com/BrainStatsSam/RFTtoolbox.
+This can be downloaded at: https://github.com/sjdavenport/RFTtoolbox.
 This package is used to generate the simulations, perform RFT inference 
 and perform general inference on local maxima.
 
